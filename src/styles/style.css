@@ -273,6 +273,7 @@ footer .max-width {
 }
 
 footer .logo-col {
+  border-right: 1px solid var(--footer-foreground);
   display: flex;
   flex-direction: column;
   gap: 0.8rem;
@@ -351,7 +352,7 @@ footer a[href^="#"]:hover::after {
   content: ":scroll";
 }
 
-footer a[href^="pages"]:hover::after {
+footer a[href^="docs"]:hover::after {
   content: ":open";
 }
 
