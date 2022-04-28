@@ -76,6 +76,10 @@ button {
   cursor: pointer;
 }
 
+main {
+  position: relative;
+}
+
 /* Extra-container rules */
 
 header,
@@ -131,6 +135,143 @@ header .logo-text {
 
 header .logo-icon {
   color: var(--black-1);
+}
+
+/* Popup */
+
+.popup {
+  visibility: hidden;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 90;
+  background-color: #efefefdd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.popup .inner {
+  visibility: hidden;
+  width: 825px;
+  height: 575px;
+  border-radius: 1rem;
+  background-color: var(--white-1);
+  box-shadow: 0 6px 8px #ccb6c2;
+  padding: 3rem;
+  z-index: 99;
+}
+
+.popup .inner .top {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.popup .inner .top h2 {
+  color: #808080;
+  font: 700 1.2rem/1.2rem "sohne", sans-serif;
+}
+
+.popup .inner .top button {
+  padding: 0.5em 0.4em 0.2em;
+  background-color: transparent;
+}
+
+.popup .inner .top button:hover {
+  background-color: #efefef;
+}
+
+.popup .inner .top img {
+  max-width: 1rem;
+}
+
+.popup .inner .rectangle {
+  width: calc(100%);
+  height: 350px;
+  margin: 2rem auto;
+  border: 2px dashed #ff4f5a;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.popup .inner .rectangle .active {
+  position: absolute;
+  top: 0;
+  z-index: 1;
+  visibility: hidden;
+  height: 100%;
+  width: 100%;
+  border-radius: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: url("../static/scribble-arrow-1.png") top 90px left 160px/10% no-repeat,
+    url("../static/scribble-arrow-2.png") top 150px right 160px/10% no-repeat, #ff4f5a;
+}
+
+.popup .inner .rectangle .active p {
+  color: var(--white-1);
+  font: 500 1.2rem/1.2rem "sohne", sans-serif;
+}
+
+.popup .inner .rectangle img {
+  margin-top: 50px;
+  max-width: 90px;
+}
+
+.popup .inner .rectangle p {
+  color: #343434;
+  font: 500 1.2rem/1.2rem "sohne", sans-serif;
+}
+
+.popup .inner .rectangle button {
+  margin-top: 0.5em;
+  color: #ff4f5a;
+  background-color: transparent;
+  font: 500 0.9rem/1rem "sohne", sans-serif;
+}
+
+.popup .inner .bottom {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.popup .inner .bottom p {
+  color: var(--footer-foreground);
+  font: 500 0.9rem/0.9rem "sohne", sans-serif;
+}
+
+.popup .inner .bottom a,
+.popup .inner .bottom a:visited {
+  color: #ff4f5a;
+  text-decoration: none;
+}
+
+.popup .inner .bottom a:hover {
+  text-decoration: underline;
+}
+
+.popup .inner .bottom button {
+  background-color: #ff4f5a;
+  color: var(--white-1);
+  border-radius: 2em;
+  padding: 1em 3em;
+  font: 500 0.9rem/0.9rem "sohne", sans-serif;
+}
+
+.popup .inner .bottom button.disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
 }
 
 /* Teaser */
@@ -205,6 +346,42 @@ header .logo-icon {
   text-transform: uppercase;
   font: 700 0.75rem/1rem "sohne", sans-serif;
   color: var(--black-2);
+}
+
+.suggestions .empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.suggestions .empty-state img {
+  margin-top: 2rem;
+  max-height: 200px;
+}
+
+.suggestions .empty-state h3 {
+  color: var(--black-2);
+  font: bold 1.5rem/1.5rem "sohne", sans-serif;
+  margin-bottom: 1rem;
+}
+
+.suggestions .empty-state p {
+  color: var(--black-2);
+  font: 500 1rem/1rem "sohne", sans-serif;
+  margin-bottom: 1.5rem;
+}
+
+.suggestions .empty-state button {
+  background-color: #ff4f5a;
+  color: var(--white-1);
+  font: 500 0.9rem/1rem "sohne", sans-serif;
+  padding: 1em 2em;
+  border-radius: 2rem;
+}
+
+.suggestions .empty-state button:hover {
+  background-color: #882329;
 }
 
 .suggestions .card-grid {
@@ -334,7 +511,7 @@ footer .footer-col a:visited {
   text-decoration: none;
   color: var(--footer-foreground);
   display: inline-block;
-  font: 400 0.9em/1em "sohne", sans-serif;
+  font: 400 0.8em/1em "sohne", sans-serif;
 }
 
 footer .footer-col a:hover {

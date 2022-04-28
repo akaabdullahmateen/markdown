@@ -34,6 +34,27 @@
     </header>
 
     <main>
+      <div class="popup">
+        <section class="inner">
+          <div class="top">
+            <h2>Upload file</h2>
+            <button title="Close this popup"><img src="src/static/close.png" alt="Close icon" /></button>
+          </div>
+          <div class="rectangle">
+            <img src="src/static/cloud-upload.png" alt="Cloud upload icon" />
+            <p>Drag & drop to upload</p>
+            <button>or browse</button>
+            <input type="file" class="visually-hidden" />
+            <div class="active">
+              <p>Drop to upload file</p>
+            </div>
+          </div>
+          <div class="bottom">
+            <p>Please read about the <a href="https://www.markdownguide.org/" target="_blank">supported format</a> before uploading.</p>
+            <button class="disabled">Parse</button>
+          </div>
+        </section>
+      </div>
       <section class="teaser">
         <div class="pattern"></div>
         <div class="max-width">
@@ -46,6 +67,12 @@
       <section class="suggestions">
         <div class="max-width">
           <h2>Recent</h2>
+          <div class="empty-state">
+            <img src="src/static/empty-state.jpg" alt="Woman holding folder with nothing inside" />
+            <h3>Nothing to see here</h3>
+            <p>Files opened on your last session will show up here.</p>
+            <button>Get Started</button>
+          </div>
           <div class="card-grid"></div>
         </div>
       </section>
@@ -81,7 +108,7 @@
               <a href="https://www.github.com/akaAbdullahMateen/markdown" target="_blank">Source Code</a>
             </li>
             <li>
-              <a href="https://www.github.com/akaAbdullahMateen/markdown/CONTRIBUTING.md" target="_blank">Contributing Guide</a>
+              <a href="https://github.com/akaAbdullahMateen/markdown/blob/main/CONTRIBUTING.md" target="_blank">Contributing Guide</a>
             </li>
           </ul>
         </div>

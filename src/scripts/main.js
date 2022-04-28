@@ -145,6 +145,13 @@ async function getJson(requestURL) {
 
 async function populateSuggestionGrid() {
   const recent = await getJson("src/data/recent.json");
+
+  if (recent["files"].length === 0) return;
+
+  const container = document.querySelector(".suggestions .max-width");
+  const emptyState = document.querySelector(".suggestions .empty-state");
+  container.removeChild(emptyState);
+
   const grid = document.querySelector(".suggestions .card-grid");
 
   for (let i = 0; i < 6; i++) {
@@ -159,7 +166,66 @@ async function populateSuggestionGrid() {
   }
 }
 
+function initializePopupListeners() {
+  const startReading = document.querySelector(".teaser button");
+  const getStarted = document.querySelector(".suggestions .empty-state button");
+  const closePopupButton = document.querySelector(".popup .inner .top button");
+  const popup = document.querySelector(".popup");
+  const inner = document.querySelector(".popup .inner");
+  const dropArea = document.querySelector(".popup .inner .rectangle");
+  const browseButton = document.querySelector(".popup .inner .rectangle button");
+  const browseInput = document.querySelector(".popup .inner .rectangle input");
+  const dropAreaActive = document.querySelector(".popup .inner .rectangle .active");
+
+  dropArea.addEventListener("dragover", (e) => {
+    e.preventDefault();
+    dropAreaActive.style.visibility = "visible";
+  });
+
+  dropArea.addEventListener("dragleave", (e) => {
+    dropAreaActive.style.visibility = "hidden";
+  });
+
+  dropArea.addEventListener("drop", (e) => {
+    e.preventDefault();
+    dropAreaActive.style.visibility = "hidden";
+    file = e.dataTransfer.files[0];
+    console.log(file);
+  });
+
+  browseButton.addEventListener("click", () => {
+    browseInput.click();
+  });
+
+  startReading.addEventListener("click", openPopup);
+  getStarted.addEventListener("click", openPopup);
+  popup.addEventListener("click", closePopup);
+  closePopupButton.addEventListener("click", closePopup);
+  inner.addEventListener("click", (e) => {
+    e.stopImmediatePropagation();
+  });
+}
+
+function openPopup() {
+  const popup = document.querySelector(".popup");
+  const inner = document.querySelector(".popup .inner");
+
+  popup.style.visibility = "visible";
+  inner.style.visibility = "visible";
+}
+
+function closePopup() {
+  const popup = document.querySelector(".popup");
+  const inner = document.querySelector(".popup .inner");
+  const dropAreaActive = document.querySelector(".popup .inner .rectangle .active");
+
+  popup.style.visibility = "hidden";
+  inner.style.visibility = "hidden";
+  dropAreaActive.style.visibility = "hidden";
+}
+
 /* Program execution */
 
 populateSuggestionGrid();
+initializePopupListeners();
 initializePattern();
